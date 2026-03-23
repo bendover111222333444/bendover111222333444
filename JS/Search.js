@@ -9,7 +9,7 @@ function searchgames() {
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
             games[i].style.display = "";
         } else {
-            games[i].style.display = "none";
+            games[i].style.display = "none !important";
         }
     }
 }
