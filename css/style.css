@@ -201,6 +201,36 @@ body.dark-mode {
     margin-top: 20px;
 }
 
+#blanker{
+    position: absolute;
+    top: 60px;
+    left: 20px;
+}
+
+#blankerBtn{
+    background-color: var(--game-link-bg);
+    color: var(--about-blank-active);
+    border: 3px;
+    align-items: center;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+#blankerSearch{
+    background-color: var(--game-link-hover);
+    color: var(--about-blank-active);
+    border: 3px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 100%;
+    text-align: start;
+}
+
 .clicks {
     text-align: right;
 }
