@@ -1,11 +1,12 @@
 var buttonEnabled = new URLSearchParams(window.location.search).get("blanker") === "true";
 
-function openPopupCloaked(url, cloakedUrl) {
-    const sep = cloakedUrl.includes("?") ? "&" : "?";
-    const popup = window.open(cloakedUrl + sep + "blanker=" + buttonEnabled, "_blank");
-    if (!popup) return;
+if (window !== window.top) {
+    document.getElementById("blanker").style.display = "none";
+}
 
-    popup.buttonEnabled = buttonEnabled;
+function openPopupCloaked(url, cloakedUrl) {
+    const popup = window.open(cloakedUrl, "_blank");
+    if (!popup) return;
 
     const userAgent = navigator.userAgent;
     let browserImg = `${location.origin}/images/newtab.png`;
@@ -49,12 +50,12 @@ document.addEventListener("DOMContentLoaded", function() {
             buttonEnabled = false;
             button.style.color = falseColor;
             button.textContent = "Blanker Off";
-            openPopupCloaked("https://bendover111222333444.onrender.com", "https://bendover111222333444.onrender.com");
+            openPopupCloaked(window.location.href.split("?")[0] + "?blanker=false", "about:blank");
         } else {
             buttonEnabled = true;
             button.style.color = trueColor;
             button.textContent = "Blanker On";
-            openPopupCloaked("https://bendover111222333444.onrender.com", "about:blank");
+            openPopupCloaked(window.location.href.split("?")[0] + "?blanker=true", "about:blank");
         }
     });
 
