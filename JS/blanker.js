@@ -77,4 +77,8 @@ if (popup) {
     popup.document.body.style.margin = "0";
     popup.document.body.appendChild(iframe);
     setTimeout(() => window.close(), 500);
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
