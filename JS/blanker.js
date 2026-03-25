@@ -1,33 +1,28 @@
 var buttonEnabled = window.opener ? window.opener.buttonEnabled : false;
 
 function openPopupCloaked(url, cloakedUrl) {
-
     const popup = window.open(cloakedUrl, "_blank");
-    if (popup) {
-        const iframe = popup.document.createElement("iframe");
-        iframe.src = url;
-        iframe.style = "position:fixed;top:0;left:0;width:100vw;height:100vh;border:none;";
-        popup.document.title = "New Tab";
-        popup.document.body.style.margin = "0";
-        popup.document.body.appendChild(iframe);
-        popup.buttonEnabled = buttonEnabled;
+    if (!popup) return;
 
-        const userAgent = navigator.userAgent;
-        let browserImg = "/images/newtab.png";
-        
-        if (userAgent.match(/edg/i)) {
-            browserImg = "/images/newtab-edge.png";
-        }
+    popup.buttonEnabled = buttonEnabled;
 
-        popup.onload = function() {
-            const favicon = popup.document.getElementById("favicon");
-            if (favicon) favicon.href = browserImg;
-            popup.document.title = "New Tab";
-        };
-
-        setTimeout(() => popup.opener && popup.opener.close(), 500);
+    const userAgent = navigator.userAgent;
+    let browserImg = "/images/newtab.png";
+    if (userAgent.match(/edg/i)) {
+        browserImg = "/images/newtab-edge.png";
     }
 
+    const doc = popup.document;
+    doc.open();
+    doc.write(`<!DOCTYPE html><html><head><link id="favicon" rel="icon" type="image/x-icon" href="${browserImg}"><title>New Tab</title></head><body style="margin:0"></body></html>`);
+    doc.close();
+
+    const iframe = doc.createElement("iframe");
+    iframe.src = url;
+    iframe.style = "position:fixed;top:0;left:0;width:100vw;height:100vh;border:none;";
+    doc.body.appendChild(iframe);
+
+    setTimeout(() => popup.opener && popup.opener.close(), 500);
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -49,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
             buttonEnabled = false;
             button.style.color = falseColor;
             button.textContent = "Blanker Off";
-            openPopupCloaked("https://bendover111222333444.onrender.com", "https://bendover111222333444.onrender.com")
+            openPopupCloaked("https://bendover111222333444.onrender.com", "https://bendover111222333444.onrender.com");
         } else {
             buttonEnabled = true;
             button.style.color = trueColor;
