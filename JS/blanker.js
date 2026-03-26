@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
             buttonEnabled = false;
             button.style.color = falseColor;
             button.textContent = "Blanker Off";
-            openPopupCloaked(window.location.href.split("?")[0] + "?blanker=false&main=true", "about:blank");
+            openPopupCloaked(window.location.href.split("?")[0] + "?blanker=false&main=true", "https://bendover111222333444.onrender.com");
         } else {
             buttonEnabled = true;
             button.style.color = trueColor;
