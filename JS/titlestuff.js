@@ -41,20 +41,6 @@ const siteNames = [
     "Bendover1112223334",
     "Bendover11122233344",
     "Bendover111222333444",
-    "Bendover111222333444.",
-    "Bendover111222333444.u",
-    "Bendover111222333444.up",
-    "Bendover111222333444.up.",
-    "Bendover111222333444.up.r",
-    "Bendover111222333444.up.ra",
-    "Bendover111222333444.up.rai",
-    "Bendover111222333444.up.rail",
-    "Bendover111222333444.up.railw",
-    "Bendover111222333444.up.railwa",
-    "Bendover111222333444.up.railway",
-    "Bendover111222333444.up.railway.a",
-    "Bendover111222333444.up.railway.ap",
-    "Bendover111222333444.up.railway.app",
 ];
 
 let currentIndex = 0;
